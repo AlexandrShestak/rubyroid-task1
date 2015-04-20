@@ -1,0 +1,26 @@
+require 'matrix'
+require 'curses'
+
+file = File.open("picture")
+car = file.to_a
+x = 0
+y = 0
+Curses.init_screen
+col = Curses.cols
+col.times do
+  y = 0
+  car.each do |el|
+    Curses.setpos(y,x)
+    Curses.addstr(el)
+    if el["_"]
+    el.gsub!  "_" , "-"
+    else
+      el.gsub!  "-" , "_"
+    end
+  y+=1
+  end
+  Curses.refresh
+  sleep(0.1)
+  x+=1
+end
+Curses.close_screen

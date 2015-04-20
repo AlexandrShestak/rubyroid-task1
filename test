@@ -1,4 +1,4 @@
-require 'matrix'
+
 require 'curses'
 
 file = File.open("picture")
